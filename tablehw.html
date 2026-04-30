@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* Modern Table Styling */
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+  }
+
+  .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 15px;
+  }
+
+  /* Zebra Striping */
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  /* Highlight Last Row */
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+  /* Hover Effect */
+  .styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Dom</td>
+      <td>88,110</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Melissa</td>
+      <td>76,500</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Bill</td>
+      <td>60,200</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
