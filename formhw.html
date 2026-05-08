@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <h2>Create Your Account</h2>
+    
+    <form action="/submit-registration" method="POST">
+        
+        <!-- Account Information -->
+        <fieldset>
+            <legend>Account Details</legend>
+            <p>
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required placeholder="e.g. jdoe88">
+            </p>
+            <p>
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" required placeholder="name@example.com">
+            </p>
+            <p>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required minlength="8">
+            </p>
+        </fieldset>
+
+        <br>
+
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Profile</legend>
+            <p>
+                <label for="fullname">Full Name:</label><br>
+                <input type="text" id="fullname" name="fullname">
+            </p>
+            <p>
+                <label for="dob">Date of Birth:</label><br>
+                <input type="date" id="dob" name="dob">
+            </p>
+            <p>
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </p>
+            <p>
+                <label for="country">Country:</label><br>
+                <select id="country" name="country">
+                    <option value="">--Select a Country--</option>
+                    <option value="usa">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                </select>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <!-- Preferences and Bio -->
+        <fieldset>
+            <legend>Extra Details</legend>
+            <p>
+                <label for="bio">Short Bio:</label><br>
+                <textarea id="bio" name="bio" rows="4" cols="40" placeholder="Tell us about yourself..."></textarea>
+            </p>
+            <p>
+                <label for="avatar">Upload Profile Picture:</label><br>
+                <input type="file" id="avatar" name="avatar" accept="image/*">
+            </p>
+            <p>
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </p>
+            <p>
+                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                <label for="newsletter">Subscribe to monthly newsletter</label>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <button type="submit">Register Now</button>
+        <button type="reset">Clear Form</button>
+
+    </form>
+
+</body>
+</html>
