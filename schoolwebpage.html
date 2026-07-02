@@ -2,55 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>School Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Campus Hub</title>
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+      body {
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+}  
+    </style>
 </head>
-<body bgcolor="#f0f8ff" text="#333333">
+<body>
 
-    <!-- Heading and Address -->
-    <table width="100%" bgcolor="#2c3e50" cellpadding="20">
-        <tr>
-            <td align="center">
-                <font color="white" size="7" face="Arial">
-                    <b>GREENWOOD INTERNATIONAL SCHOOL</b>
-                </font>
-                <br>
-                <font color="white" size="3" face="Verdana">
-                    <i>123 Education Lane, Knowledge City, State - 560001</i>
-                </font>
-            </td>
-        </tr>
-    </table>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Acme Academy</a>
+            <button class="navbar-expand-lg navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Clubs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <br>
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container py-3">
+            <h1 class="display-4 fw-bold">Welcome to Student Life</h1>
+            <p class="lead">Explore your passions, build friendships, and discover your potential.</p>
+            <a href="#clubs" class="btn btn-light btn-lg mt-3 fw-semibold">Join a Club</a>
+        </div>
+    </header>
 
-    <!-- Content Section -->
-    <table width="80%" align="center" border="1" cellpadding="15" cellspacing="0" bgcolor="white">
-        <tr>
-            <td>
-                <font face="Arial" size="5" color="#2c3e50"><b>School Overview</b></font>
-                <hr>
-                <p>
-                    <font face="Arial" size="4">
-                        <b>Total Number of Students:</b> 1,250<br><br>
-                        <b>Educational Board:</b> Registered to CBSE (Central Board of Secondary Education)
-                    </font>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <font face="Arial" size="5" color="#2c3e50"><b>Academic Streams Offered</b></font>
-                <hr>
-                <font face="Arial" size="4">
-                    <ul>
-                        <li>Science (Physics, Chemistry, Maths/Biology)</li>
-                        <li>Commerce (Accountancy, Business Studies, Economics)</li>
-                        <li>Humanities (History, Geography, Political Science)</li>
-                    </ul>
-                </font>
-            </td>
-        </tr>
-    </table>
+    <main id="clubs" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our School Clubs</h2>
+                <div class="bg-primary mx-auto mb-3" style="width: 60px; height: 4px;"></div>
+                <p class="text-muted">Find the perfect community to grow outside the classroom.</p>
+            </div>
 
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-primary fs-3">🤖</div>
+                            <h4 class="card-title fw-bold">Robotics & AI Club</h4>
+                            <p class="card-text text-muted">Build smart machines and dive into visual coding, mechanical programming, and circuit logic.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-danger fs-3">🎨</div>
+                            <h4 class="card-title fw-bold">Fine Arts Society</h4>
+                            <p class="card-text text-muted">Express your creativity through sketching, canvas painting, digital design, and gallery curation.</p>
+                            <a href="#" class="btn btn-outline-danger btn-sm mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-success fs-3">⚽</div>
+                            <h4 class="card-title fw-bold">Varsity Sports Club</h4>
+                            <p class="card-text text-muted">Train competitively or stay fit with intramural soccer, basketball, track running, and volleyball games.</p>
+                            <a href="#" class="btn btn-outline-success btn-sm mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning fs-3">🎭</div>
+                            <h4 class="card-title fw-bold">Drama & Theater</h4>
+                            <p class="card-text text-muted">Step into the spotlight with seasonal theatrical productions, script reading, and set production design.</p>
+                            <a href="#" class="btn btn-outline-warning btn-sm mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-info fs-3">🧪</div>
+                            <h4 class="card-title fw-bold">Environmental Science</h4>
+                            <p class="card-text text-muted">Lead sustainability efforts through zero-waste initiatives, school gardening, and green energy audits.</p>
+                            <a href="#" class="btn btn-outline-info btn-sm mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-dark fs-3">♟️</div>
+                            <h4 class="card-title fw-bold">Strategy Chess Club</h4>
+                            <p class="card-text text-muted">Master critical board openings, defensive endgames, and compete in local inter-school tournament circuits.</p>
+                            <a href="#" class="btn btn-outline-dark btn-sm mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy 2026 Acme Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
