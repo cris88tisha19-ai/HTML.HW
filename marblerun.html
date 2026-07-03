@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Marble Run Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .game-container {
+            background: #2d3436;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .game-header {
+            color: white;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .stat-item span {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            background: #1a1a2e;
+            cursor: pointer;
+            touch-action: none;
+            width: 600px;
+            height: 500px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-start {
+            background: #00b894;
+            color: white;
+        }
+
+        .btn-reset {
+            background: #fd79a8;
+            color: white;
+        }
+
+        .btn-hint {
+            background: #fdcb6e;
+            color: #2d3436;
+        }
+
+        .btn-tilt {
+            background: #74b9ff;
+            color: #2d3436;
+        }
+
+        .mobile-controls {
+            display: none;
+            grid-template-columns: repeat(3, 60px);
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .mobile-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            touch-action: none;
+        }
+
+        .mobile-btn:active {
+            background: rgba(255,255,255,0.4);
+            transform: scale(0.9);
+        }
+
+        .mobile-btn.center {
+            background: rgba(255,255,255,0.1);
+            cursor: default;
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+            z-index: 10;
+            animation: popIn 0.5s;
+        }
+
+        .message h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .message p {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            80% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            #gameCanvas {
+                width: 100%;
+                height: auto;
+                max-width: 600px;
+                aspect-ratio: 6/5;
+            }
+
+            .game-container {
+                padding: 10px;
+                margin: 10px;
+                width: 95%;
+            }
+
+            .game-header {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 14px;
+            }
+
+            .stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .mobile-controls {
+                display: grid;
+            }
+        }
+
+        @media (pointer: coarse) {
+            .mobile-controls {
+                display: grid;
+            }
+        }
+
+        /* Tilt indicator */
+        .tilt-indicator {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- Header -->
+        <div class="game-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 24px;">🎯</span>
+                <h2>Marble Run</h2>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    ⏱️ <span id="timer">0</span>s
+                </div>
+                <div class="stat-item">
+                    🎯 <span id="moves">0</span>
+                </div>
+                <div class="stat-item">
+                    💨 <span id="speed">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="600" height="500"></canvas>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-start" onclick="startGame()">▶ Start</button>
+            <button class="btn btn-reset" onclick="resetGame()">🔄 Reset</button>
+            <button class="btn btn-hint" onclick="showHint()">💡 Hint</button>
+            <button class="btn btn-tilt" onclick="toggleTilt()">📱 Tilt</button>
+        </div>
+
+        <!-- Mobile Touch Controls -->
+        <div class="mobile-controls" id="mobileControls">
+            <div></div>
+            <button class="mobile-btn" onmousedown="moveMarble('up')" ontouchstart="moveMarble('up')">⬆</button>
+            <div></div>
+            <button class="mobile-btn" onmousedown="moveMarble('left')" ontouchstart="moveMarble('left')">⬅</button>
+            <button class="mobile-btn center">●</button>
+            <button class="mobile-btn" onmousedown="moveMarble('right')" ontouchstart="moveMarble('right')">➡</button>
+            <div></div>
+            <button class="mobile-btn" onmousedown="moveMarble('down')" ontouchstart="moveMarble('down')">⬇</button>
+            <div></div>
+        </div>
+
+        <!-- Win Message -->
+        <div class="message" id="winMessage">
+            <h2>🎉 You Win!</h2>
+            <p>Time: <span id="finalTime">0</span>s</p>
+            <p>Moves: <span id="finalMoves">0</span></p>
+            <br>
+            <button class="btn btn-start" onclick="resetGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+      
